@@ -13,7 +13,7 @@ namespace WebAPISample.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
-        private ApplicationContext _context;
+        private readonly ApplicationContext _context;
         public MovieController(ApplicationContext context)
         {
             _context = context;
