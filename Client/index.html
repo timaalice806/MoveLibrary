@@ -10,6 +10,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"
     />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <title>Movie App</title>
     <meta charset="utf-8" />
@@ -21,7 +22,7 @@
         <pre></pre>
       </div>
 
-      <table class="striped">
+      <table class="striped " id="results_table">
         <thead>
           <tr>
             <th data-field="id">Genre</th>
@@ -30,22 +31,8 @@
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
+        <tbody id="table-data">
+          
         </tbody>
       </table>
 

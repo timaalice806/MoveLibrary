@@ -43,16 +43,24 @@ namespace WebAPISample.Controllers
 
         // POST api/movie
         [HttpPost]
-        public void Post([FromBody]Movie value)
+        public void Post([FromBody]Movie movie)
         {
             // Create movie in db logic
+            _context.Movies.Add(movie);
+            _context.SaveChanges();
+
         }
 
         // PUT api/movie/5
-        [HttpPut]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut("{id}")]
+        public void Put(int MovieId, [FromBody]Movie movie)
         {
             // Update movie in db logic
+            Movie oldMovie = _context.Movies.Find(movie.MovieId);
+            oldMovie.Title = movie.Title;
+            oldMovie.Genre = movie.Genre;
+            oldMovie.Director = movie.Director;
+            _context.SaveChanges();
         }
 
         // DELETE api/movie/5
@@ -60,6 +68,9 @@ namespace WebAPISample.Controllers
         public void Delete(int id)
         {
             // Delete movie from db logic
+            var result = _context.Movies.Find(id);
+            _context.Movies.Remove(result);
+            _context.SaveChanges();
         }
     }
 }

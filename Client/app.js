@@ -12,15 +12,31 @@
       contentType: "application/json",
       data: JSON.stringify(dict),
       success: function(data, textStatus, jQxhr) {
-        $("#response pre").html(data);
+        //$("#response pre").html(data);
+        console.log(data)
       },
       error: function(jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
       }
     });
-
     e.preventDefault();
   }
 
+  $(document).ready(function(){
+    movie_data = "";
+    $.getJSON("https://localhost:44325/api/movie", function(data){
+      console.log(data);
+      $.each(data, function (key, value) {
+        movie_data += "<tr>";
+        movie_data += "<td>" + value.title+ "</td>";
+        movie_data += "<td>" + value.genre + "</td>";
+        movie_data += "<td>" + value.director + "</td>";
+        movie_data += "</tr>";
+      });
+      $("#table-data").append(movie_data);
+    })
+  })
   $("#my-form").submit(processForm);
 })(jQuery);
+
+
