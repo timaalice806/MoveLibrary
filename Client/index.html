@@ -1,23 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>jQuery AJAX POST Form</title>
-    <meta charset="utf-8">
-</head>
-<body>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,700|Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Movie App</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Fatima's <span class="highight">Movie Guide</span></h1>
+      <div id="response">
+        <pre></pre>
+      </div>
 
-<div id="response">
-    <pre></pre>
-</div>
+      <table class="striped">
+        <thead>
+          <tr>
+            <th data-field="id">Genre</th>
+            <th data-field="name">Movie Title</th>
+            <th data-field="price">Director</th>
+          </tr>
+        </thead>
 
-<form id="my-form">
-    <input type="text" name="title" placeholder="Title" />
-    <input type="text" name="director" placeholder="Director" />
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <button type="submit">Submit</button>
-</form>
+      <form clss="col s12" id="my-form">
+        <input type="text" name="title" placeholder="Add a Movie Genre" />
+        <input type="text" name="title" placeholder="Add a Movie Title" />
+        <input type="text" name="director" placeholder="Add the Director" />
+        <button
+          class="btn waves-effect waves-light"
+          type="submit"
+          name="action"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="./app.js"></script>
-</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./app.js"></script>
+  </body>
 </html>
