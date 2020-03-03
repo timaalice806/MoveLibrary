@@ -26,13 +26,19 @@ namespace WebAPISample.Controllers
             return _context.Movies.ToArray();
         }
 
-        // GET api/movie/5
+        // GET api/movie/id
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            // Retrieve movie by id from db logic
-            _context.Movies.Where(m => m.Title.)
-            yield return id;
+            var result = _context.Movies.Find(id);
+            if (_context.Movies == null)
+            {
+                return NotFound().ToString();
+            }
+            else
+            {
+                return result.ToString();
+            }
         }
 
         // POST api/movie
