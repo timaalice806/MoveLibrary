@@ -5,10 +5,14 @@
       href="https://fonts.googleapis.com/css?family=Raleway:300,400,700|Satisfy&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
     />
     <link rel="stylesheet" href="style.css" />
     <title>Movie App</title>
@@ -20,34 +24,29 @@
       <div id="response">
         <pre></pre>
       </div>
-
       <table class="striped">
         <thead>
-          <tr> 
+          <tr>
             <th data-field="name">Movie Title</th>
-            <th data-field="id">Genre</th>
-            <th data-field="price">Director</th>
+            <th data-field="genre">Genre</th>
+            <th data-field="director">Director</th>
           </tr>
         </thead>
-
         <tbody id="table-data"></tbody>
       </table>
-      
       <form clss="col s12" id="my-form">
         <input type="text" name="title" placeholder="Add a Movie Title" />
-        <input type="text" name="title" placeholder="Add a Genre" />
+        <input type="text" name="genre" placeholder="Add a Movie Genre" />
         <input type="text" name="director" placeholder="Add the Director" />
         <button
           class="btn waves-effect waves-light"
           type="submit"
           name="action"
-          onclick="processForm(e)"
         >
           Submit
         </button>
       </form>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="./app.js"></script>
   </body>

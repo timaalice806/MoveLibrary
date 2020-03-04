@@ -38,7 +38,6 @@ namespace WebAPISample.Controllers
         [HttpPost]
         public void Post([FromBody]Movie movie)
         {
-
             // Create movie in db logic
             _context.Movies.Add(movie);
             _context.SaveChanges();
@@ -57,14 +56,13 @@ namespace WebAPISample.Controllers
         }
 
         // DELETE api/movie/5
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            // Delete movie from db logic
             try
             {
-                _context.Movies.Remove(_context.Movies.FirstOrDefault(h => h.MovieId == id));
-                var movie = _context.SaveChangesAsync();
+                _context.Movies.Remove(_context.Movies.FirstOrDefault(m => m.MovieId == id));
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {
