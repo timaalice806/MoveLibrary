@@ -34,3 +34,11 @@ body {
 table {
   margin-bottom: 50px !important;
 }
+
+.material-icons{
+  color: #EE82EE;
+}
+
+.btn{
+  background: #EE82EE !important;
+}
