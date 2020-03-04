@@ -23,7 +23,7 @@ namespace WebAPISample.Controllers
         public IEnumerable<Movie> Get()
         {
             // Retrieve all movies from db logic
-            return _context.Movies.ToArray();
+            return _context.Movies.ToList();
         }
 
         // GET api/movie/id
@@ -38,6 +38,7 @@ namespace WebAPISample.Controllers
         [HttpPost]
         public void Post([FromBody]Movie movie)
         {
+
             // Create movie in db logic
             _context.Movies.Add(movie);
             _context.SaveChanges();
@@ -60,9 +61,20 @@ namespace WebAPISample.Controllers
         public void Delete(int id)
         {
             // Delete movie from db logic
-            var result = _context.Movies.Find(id);
-            _context.Movies.Remove(result);
-            _context.SaveChanges();
+            try
+            {
+                _context.Movies.Remove(_context.Movies.FirstOrDefault(h => h.MovieId == id));
+                var movie = _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                InternalServerError(ex);
+            }
+        }
+
+        private void InternalServerError(Exception ex)
+        {
+            throw new NotImplementedException();
         }
     }
 }

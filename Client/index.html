@@ -10,7 +10,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"
     />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <title>Movie App</title>
     <meta charset="utf-8" />
@@ -22,7 +21,7 @@
         <pre></pre>
       </div>
 
-      <table class="striped " id="results_table">
+      <table class="striped">
         <thead>
           <tr> 
             <th data-field="name">Movie Title</th>
@@ -31,8 +30,7 @@
           </tr>
         </thead>
 
-        <tbody id="table-data">     
-        </tbody>
+        <tbody id="table-data"></tbody>
       </table>
       
       <form clss="col s12" id="my-form">
@@ -43,8 +41,7 @@
           class="btn waves-effect waves-light"
           type="submit"
           name="action"
-          value="get_data"
-          onclick=""
+          onclick="processForm(e)"
         >
           Submit
         </button>
