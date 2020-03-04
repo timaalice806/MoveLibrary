@@ -44,11 +44,11 @@ namespace WebAPISample.Controllers
         }
 
         // PUT api/movie/5
-        [HttpPut("{id}")]
+        [HttpPut("{MovieId}")]
         public void Put(int MovieId, [FromBody]Movie movie)
         {
             // Update movie in db logic
-            Movie oldMovie = _context.Movies.Find(movie.MovieId);
+            Movie oldMovie = _context.Movies.Find(MovieId);
             oldMovie.Title = movie.Title;
             oldMovie.Genre = movie.Genre;
             oldMovie.Director = movie.Director;
