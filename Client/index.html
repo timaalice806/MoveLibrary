@@ -24,26 +24,27 @@
 
       <table class="striped " id="results_table">
         <thead>
-          <tr>
-            <th data-field="id">Genre</th>
+          <tr> 
             <th data-field="name">Movie Title</th>
+            <th data-field="id">Genre</th>
             <th data-field="price">Director</th>
           </tr>
         </thead>
 
-        <tbody id="table-data">
-          
+        <tbody id="table-data">     
         </tbody>
       </table>
-
+      
       <form clss="col s12" id="my-form">
-        <input type="text" name="title" placeholder="Add a Movie Genre" />
         <input type="text" name="title" placeholder="Add a Movie Title" />
+        <input type="text" name="title" placeholder="Add a Genre" />
         <input type="text" name="director" placeholder="Add the Director" />
         <button
           class="btn waves-effect waves-light"
           type="submit"
           name="action"
+          value="get_data"
+          onclick=""
         >
           Submit
         </button>

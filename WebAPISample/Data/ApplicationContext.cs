@@ -14,12 +14,12 @@ namespace WebAPISample.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Seed data - needs migration
-            // modelBuilder.Entity<Movie>
+            // modelBuilder.Entity<Movie>()
             //  .HasData(
             //  new Movie{Fill All Properties}
             //  );
             // View PlayerTracker project for example
-            modelBuilder.Entity < Movie >()
+            modelBuilder.Entity <Movie>()
             .HasData(
             new Models.Movie { MovieId = 1, Title = "The Departed", Genre = "Drama", Director = "Martin Scorsese" },
             new Models.Movie { MovieId = 2, Title = "The Dark Knight", Genre = "Drama", Director = "Christopher Nolan" },
@@ -27,7 +27,6 @@ namespace WebAPISample.Data
             new Models.Movie { MovieId = 4, Title = "Pineapple Express", Genre = "Comedy", Director = "David Gordon Green" },
             new Models.Movie { MovieId = 5, Title = "Die Hard", Genre = "Action", Director = "John McTiernan" });
         }
-
         public DbSet<Movie> Movies { get; set; }
     }
 }

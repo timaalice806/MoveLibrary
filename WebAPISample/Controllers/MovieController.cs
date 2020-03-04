@@ -28,17 +28,10 @@ namespace WebAPISample.Controllers
 
         // GET api/movie/id
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Movie Get(int id)
         {
-            var result = _context.Movies.Find(id);
-            if (_context.Movies == null)
-            {
-                return NotFound().ToString();
-            }
-            else
-            {
-                return result.ToString();
-            }
+           var result = _context.Movies.Find(id);
+           return result;
         }
 
         // POST api/movie
@@ -48,7 +41,6 @@ namespace WebAPISample.Controllers
             // Create movie in db logic
             _context.Movies.Add(movie);
             _context.SaveChanges();
-
         }
 
         // PUT api/movie/5

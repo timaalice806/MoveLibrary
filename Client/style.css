@@ -9,6 +9,7 @@ body {
   );
   height: 100vh;
   font-family: "Raleway" !important;
+  font-size: 16px;
 }
 
 .title {
@@ -37,8 +38,11 @@ table {
 
 .material-icons{
   color: #EE82EE;
-}
+  float: right;
+  padding-right: 30px;
 
 .btn{
   background: #EE82EE !important;
 }
+
+

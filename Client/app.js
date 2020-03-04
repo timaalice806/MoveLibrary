@@ -30,7 +30,7 @@
         movie_data += "<tr>";
         movie_data += "<td>" + value.title+ "</td>";
         movie_data += "<td>" + value.genre + "</td>";
-        movie_data += "<td>" + value.director + "</td>";
+        movie_data += "<td>" + value.director  + "<a href=''><i class='material-icons edit-icon'>edit</i></a>" + "<a href=''><i class='material-icons edit-icon'>delete</i></a>" + "</td>" ;
         movie_data += "</tr>";
       });
       $("#table-data").append(movie_data);
