@@ -28,41 +28,41 @@
         </thead>
 
         <tbody id="table-data"></tbody>
-        <form clss="col s12 mb-5" id="my-form">
+        <form clss="col s12 mb-5" id="new-form">
           <div class="form-group">
             <input
-              class="form-control"
+              class="form-control mb-1"
               type="text"
               name="title"
               placeholder="Add a Movie Title"
             />
             <input
               type="text"
-              class="form-control"
+              class="form-control mb-1"
               name="genre"
               placeholder="Add a Movie Genre"
             />
             <input
               type="text"
-              class="form-control"
+              class="form-control mb-1"
               name="director"
               placeholder="Add the Director"
             />
-            <button class="btn btn-primary" type="submit" name="action">
+            <button class="btn btn-primary mb-4" type="submit" name="action">
               Submit
             </button>
+           
+
 
             <div id="updateMovie" >
-              <h2>Update Movie</h2> (first Get All Records, then click on the record you want to update)
-              <form id="update-form">
-                  <input type="hidden" id="id-input" name="MovieId">
-                  <input id="title-input" type="text" name="title" placeholder="Title" />
-                  <input id="director-input" type="text" name="director" placeholder="Director" />
-                  <input id="genre-input" type="text" name="genre" placeholder="Genre" />
-                  <input id="image-input" type="text" name="image" placeholder="Image URL" />
-  
-                  <button name="action" value="update" type="submit">Update</button>
-                  <button name="action" id="deleteBtn" value="delete" type="button">Remove</button>
+              <h2>Update Movie</h2>
+              <form id="update-action" class="form">
+                  <input class="form-control mb-1"type="hidden" id="Movieid" name="MovieId">
+                  <input class="form-control mb-1" id="title" type="text" name="title" placeholder="Title" />
+                  <input class="form-control mb-1" id="director" type="text" name="director" placeholder="Director" />
+                  <input class="form-control mb-1" id="genre" type="text" name="genre" placeholder="Genre" />
+                  <button name="action" value="update" type="submit" class="btn btn-success btn-md">Update</button>
+                  <button name="action" id="deleteBtn" value="delete" type="button" class="btn btn-danger btn-md">Delete</button>
               </form>
           </div>
       </div>

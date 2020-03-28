@@ -20,9 +20,14 @@ function fetchAllMovies(e) {
           "</td>" +
           "<td>" +
           response[i].director +
-          "<a href='' type='button' id='updateBtn'><i value='edit' id='updateBtn' class='btn btn-primary btn-sm ml-2 mr-2'>edit</i></a>" +
-          "<a href='' type='button' id='removeBtn'><i class='btn btn-success btn-sm m1-2'>delete</i></a>" +
-          "</td>";
+          "<button class='btn btn-sm btn-primary mr-2 ml-2' type='button' id='updateBtn' onclick='updateMovie(" +
+          response[i].movieId +
+          ")'>edit</button>" +
+          "<button type='button' class='btn btn-sm btn-danger mr-2 ml-2' onclick='deleteMovie(" +
+          response[i].movieId +
+          ")'>delete</button>" +
+          "</td>" +
+          "</tr>";
       }
       $("#table-data").append(ListValue);
     },
@@ -73,7 +78,7 @@ $("#my-form").submit(processForm);
 
 //////////////////////////////////////////////////////END POST REQUEST////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////START PUT REQUEST//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function putForm(e) {
+function updateForm(e) {
   var dict = {
     Title: this["title"].value,
     Director: this["director"].value,
@@ -82,18 +87,17 @@ function putForm(e) {
   };
 
   $.ajax({
-    url: "https://localhost:44352/api/movie",
+    url: `https://localhost:5001/api/movie/${movieId}`,,
     dataType: "json",
-    type: "put",
+    type: "PUT",
     contentType: "application/json",
     data: JSON.stringify(dict),
     success: function(data, textStatus, jQxhr) {
       console.log("success?");
-      $("#updatePop").hide();
-      $("#title-input").val("");
-      $("#director-input").val("");
-      $("#genre-input").val("");
-      $("#image-input").val("");
+      $("#updateMovie").hide();
+      $("#title").val("");
+      $("#director").val("");
+      $("#genre").val("");
       GetAllMovies();
     },
     error: function(jqXhr, textStatus, errorThrown) {
@@ -103,19 +107,22 @@ function putForm(e) {
   e.preventDefault();
 }
 
-$("#updateBtn").click(removeFromList());
-
-function removeFromList(id) {
-  $.ajax({
-    url: "https://localhost:5001/api/movie" + id,
-    type: "DELETE",
-    success: function(result) {
-      alert("it has been deleted");
-      fetchAllMovies();
-    }
-  });
-  fetchAllMovies();
-}
-
 //////////////////////////////////////////////////////////////END UPDATE////////////////////////////////////
 ///////////////////////////////////////////////////////////////START DELETE/////////////////////////////////
+
+function deleteMovie(movieId) {
+  $.ajax({
+    url: `https://localhost:5001/api/movie/${movieId}`,
+    method: "DELETE",
+    success: function() {
+      alert("the movie has been deleted");
+      fetchAllMovies();
+    },
+    error: function(error) {
+      alert(`error: ${error}`);
+    }
+  });
+}
+
+///////////////////////////////////////////////////////////////END DELETE/////////////////////////////////
+
