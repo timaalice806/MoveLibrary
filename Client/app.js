@@ -1,6 +1,9 @@
+dynamicUrl = "";
+dynamicMethod = "";
+
 function fetchAllMovies(e) {
   $.ajax({
-    type: "GET",
+    method: "GET",
     url: "https://localhost:5001/api/movie",
     contentType: "application/json; charset=utf-8",
     dataType: "json",
@@ -53,19 +56,29 @@ function processForm(e) {
     Genre: this["genre"].value,
     Director: this["director"].value
   };
+
+  let movieToUpdate = this["movieId"].value;
+  if (movieToUpdate) {
+    dynamicUrl = `https://localhost:5001/api/movie/${movieToUpdate}`;
+    dynamicMethod = "PUT";
+  } else {
+    dynamicUrl = `https://localhost:5001/api/movie/`;
+    dynamicMethod = "POST";
+  }
+
   $.ajax({
-    url: "https://localhost:5001/api/movie",
+    url: dynamicUrl,
     dataType: "json",
-    type: "POST",
+    method: dynamicMethod,
     contentType: "application/json",
     data: JSON.stringify(dict),
-    success: function(data, textStatus, jQxhr) {
+    success: function(response, textStatus, jQxhr) {
       console.log("success?");
-      $("#response pre").html(data);
+      $("#response pre").html(response);
       $("#title").val("");
       $("#genre").val("");
       $("#director").val("");
-      // GetAllMovies();
+      fetchAllMovies();
     },
     error: function(jqXhr, textStatus, errorThrown) {
       console.log(errorThrown);
@@ -74,37 +87,26 @@ function processForm(e) {
   e.preventDefault();
 }
 
-$("#my-form").submit(processForm);
+$("#new-form").submit(processForm);
 
 //////////////////////////////////////////////////////END POST REQUEST////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////START PUT REQUEST//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function updateForm(e) {
-  var dict = {
-    Title: this["title"].value,
-    Director: this["director"].value,
-    Genre: this["genre"].value,
-    MovieId: this["MovieId"].value
-  };
-
+function updateMovie(movieId) {
   $.ajax({
-    url: `https://localhost:5001/api/movie/${movieId}`,,
+    url: `https://localhost:5001/api/movie/${movieId}`,
+    method: "GET",
     dataType: "json",
-    type: "PUT",
-    contentType: "application/json",
-    data: JSON.stringify(dict),
-    success: function(data, textStatus, jQxhr) {
-      console.log("success?");
-      $("#updateMovie").hide();
-      $("#title").val("");
-      $("#director").val("");
-      $("#genre").val("");
-      GetAllMovies();
+    success: function(response) {
+      $("#title").val(response.title);
+      $("#genre").val(response.genre);
+      $("#director").val(response.director);
+      $("#movieId").val(response.movieId);
+      fetchAllMovies();
     },
-    error: function(jqXhr, textStatus, errorThrown) {
-      console.log(errorThrown);
+    error: function(error) {
+      console.log(error);
     }
   });
-  e.preventDefault();
 }
 
 //////////////////////////////////////////////////////////////END UPDATE////////////////////////////////////
@@ -116,7 +118,6 @@ function deleteMovie(movieId) {
     method: "DELETE",
     success: function() {
       alert("the movie has been deleted");
-      fetchAllMovies();
     },
     error: function(error) {
       alert(`error: ${error}`);
@@ -124,5 +125,8 @@ function deleteMovie(movieId) {
   });
 }
 
-///////////////////////////////////////////////////////////////END DELETE/////////////////////////////////
+///////////////////////////////////////////////////////////////END DELETE///////////////////////////////////
+///////////////////////////////////////////////////////////////START SEARCH/////////////////////////////////
+
+
 

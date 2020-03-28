@@ -21,50 +21,50 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th data-field="name" scope="col">Movie Title</th>
-            <th data-field="genre" scope="col">Genre</th>
-            <th data-field="director" scope="col">Director</th>
+            <th data-field="name" scope="col" data-sort="title">Movie Title</th>
+            <th data-field="genre" scope="col" data-sort="genre">Genre</th>
+            <th data-field="director" scope="col" data-sort="director">Director</th>
           </tr>
         </thead>
 
         <tbody id="table-data"></tbody>
         <form clss="col s12 mb-5" id="new-form">
           <div class="form-group">
+            
+            <input
+              class="form-control mb-1 hidden "
+              type="text"
+              name="movieId"
+              id="movieId"
+              placeholder="MovieId "
+            />
+            <label for="exampleInputEmail1">Title</label>
             <input
               class="form-control mb-1"
               type="text"
               name="title"
+              id="title"
               placeholder="Add a Movie Title"
             />
+            <label for="exampleInputEmail1">Genre</label>
             <input
               type="text"
               class="form-control mb-1"
               name="genre"
+              id="genre"
               placeholder="Add a Movie Genre"
             />
+            <label for="exampleInputEmail1">Director</label>
             <input
               type="text"
               class="form-control mb-1"
               name="director"
+              id="director"
               placeholder="Add the Director"
             />
             <button class="btn btn-primary mb-4" type="submit" name="action">
               Submit
             </button>
-           
-
-
-            <div id="updateMovie" >
-              <h2>Update Movie</h2>
-              <form id="update-action" class="form">
-                  <input class="form-control mb-1"type="hidden" id="Movieid" name="MovieId">
-                  <input class="form-control mb-1" id="title" type="text" name="title" placeholder="Title" />
-                  <input class="form-control mb-1" id="director" type="text" name="director" placeholder="Director" />
-                  <input class="form-control mb-1" id="genre" type="text" name="genre" placeholder="Genre" />
-                  <button name="action" value="update" type="submit" class="btn btn-success btn-md">Update</button>
-                  <button name="action" id="deleteBtn" value="delete" type="button" class="btn btn-danger btn-md">Delete</button>
-              </form>
-          </div>
       </div>
           </div>
         </form>
