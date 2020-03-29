@@ -46,21 +46,12 @@ input-field {
   text-align: center !important;
 }
 
-.pull-right {
+.pull-right1 {
   float: right;
-}
-
-.container2 input {
 }
 
 table {
   margin-bottom: 50px !important;
-}
-
-.material-icons {
-  color: #ee82ee;
-  float: right;
-  padding-right: 30px;
 }
 
 .btn {
@@ -80,11 +71,12 @@ table {
 input {
   border-radius: 20px !important;
   padding: 15px 0 !important;
+  text-align: center;
 }
 
 button {
   border: 1px sold rgba(106, 13, 173, 1) !important;
-  border-radius: 15px !important;
+  border-radius: 10px !important;
   font-weight: bold !important;
   letter-spacing: 1.2 !important;
 }

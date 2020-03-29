@@ -23,10 +23,10 @@ function fetchAllMovies(e) {
           "</td>" +
           "<td>" +
           response[i].director +
-          "<button class='btn btn-sm pull-right mr-2 ml-2' type='button' id='updateBtn' onclick='updateMovie(" +
+          "<button class='btn btn-sm pull-right1 mr-2 ml-2' type='button' id='updateBtn' onclick='updateMovie(" +
           response[i].movieId +
           ")'>edit</button>" +
-          "<button type='button' class='pull-right btn btn-sm mr-2 ml-2' onclick='deleteMovie(" +
+          "<button type='button' class='pull-right1 btn btn-sm mr-2 ml-2' onclick='deleteMovie(" +
           response[i].movieId +
           ")'>delete</button>" +
           "</td>" +
