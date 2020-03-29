@@ -9,16 +9,29 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Satisfy&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Fatima's Movie Guide</title>
   </head>
   <body>
     <div class="container">
+            <div class="container-2">
+            <input
+              class="form-control mb-5 search-box"
+              type="text"
+              name="search"
+              id="searcj"
+              placeholder="Search Movie Directory"
+            />
+            </div>
       <h1 class="title">Fatima's <span class="highight">Movie Guide</span></h1>
       <div id="response">
         <pre></pre>
       </div>
-      <table class="table table-striped">
+      <div class="form-group">
+            
+        
+      <table class="table table-striped" id="movie-table">
         <thead>
           <tr>
             <th data-field="name" scope="col" data-sort="title">Movie Title</th>
@@ -62,7 +75,7 @@
               id="director"
               placeholder="Add the Director"
             />
-            <button class="btn btn-primary mb-4" type="submit" name="action">
+            <button class="btn mb-4 mt-2" type="submit" name="action">
               Submit
             </button>
       </div>
