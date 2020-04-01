@@ -1,49 +1,82 @@
 body {
   background-image: linear-gradient(
     to right,
-    #eea2a2 0%,
-    #bbc1bf 19%,
-    #57c6e1 42%,
-    #b49fda 79%,
-    #7ac5d8 100%
+    #EEA2A2 0%,
+    #BBC1BF 19%,
+    #57C6E1 42%,
+    #B49FDA 79%,
+    #7AC5D8 100%
   );
   height: 100vh;
-  font-family: "Raleway" !important;
+  font-family: "Roboto", sans-serif !important;
   font-size: 16px;
 }
-
 .title {
-  font-family: "Satisfy";
+  font-family: "Satisfy" !important;
   font-size: 3.5rem;
   color: #063852;
   font-weight: 300;
   padding: 0;
   text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.4);
 }
-
+input-field {
+  border: 2px solid blue;
+}
 .highight {
-  font-family: "Raleway" !important;
+  font-family: "Roboto";
   font-weight: 700;
   font-size: 2rem;
   color: #333;
 }
-
+.striped {
+  max-height: 500px;
+  border: 2px solid red;
+}
 .container {
   height: 100%;
   padding-top: 100px;
 }
+.container2 {
+  width: 50% !important;
+  margin-bottom: 150px !important;
+  text-align: center !important;
+}
+.pull-right1 {
+  float: right;
+}
 table {
   margin-bottom: 50px !important;
 }
-
-.material-icons{
-  color: #EE82EE;
-  float: right;
-  padding-right: 30px;
-}
-
-.btn{
+.btn {
   background: #EE82EE !important;
 }
-
-
+.hidden {
+  display: none;
+}
+.search-box {
+  width: 90%;
+  margin-left: 5%;
+  display: block !important;
+}
+input {
+  border-radius: 20px !important;
+  padding: 15px 0 !important;
+  text-align: center;
+}
+button {
+  border: 1px sold rgba(106, 13, 173, 1) !important;
+  border-radius: 10px !important;
+  font-weight: bold !important;
+  letter-spacing: 1.2 !important;
+}
+label {
+  font-weight: bold !important;
+  margin-left: 15px !important;
+  -webkit-box-shadow: 14px 14px 17px -17px rgba(106, 13, 173, 1);
+  -moz-box-shadow: 14px 14px 17px -17px rgba(106, 13, 173, 1);
+  box-shadow: 14px 14px 17px -17px rgba(106, 13, 173, 1);
+}
+::placeholder {
+  text-align: center;
+  color: black;
+}

@@ -1,76 +1,117 @@
-(function($) {
-  function processForm(e) {
-    var dict = {
-      Title: this["title"].value,
-      Genre: this["genre"].value,
-      Director: this["director"].value,
-      
-    };
-    $.ajax({
-      url: "https://localhost:44325/api/movie",
-      dataType: "json",
-      type: "post",
-      contentType: "application/json",
-      data: JSON.stringify(dict),
-      success: function(data, textStatus, jQxhr) {
-        console.log("success?");
-        $("#response pre").html(data);
-        $("#title").val("");
-        $("#genre").val("");
-        $("#director").val("");
-        // GetAllMovies();
-      },
-      error: function(jqXhr, textStatus, errorThrown) {
-        console.log(errorThrown);
+dynamicUrl = "";
+dynamicMethod = "";
+function fetchAllMovies(e) {
+  $.ajax({
+    method: "GET",
+    url: "https://localhost:5001/api/movie",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(response) {
+      $("#MemberList").empty();
+      console.log(response);
+      var ListValue = "";
+      var i;
+      for (i = 0; i < response.length; ++i) {
+        ListValue +=
+          "<tr>" +
+          "<td>" +
+          response[i].title +
+          "</td>" +
+          "<td>" +
+          response[i].genre +
+          "</td>" +
+          "<td>" +
+          response[i].director +
+          "<button class='btn btn-sm pull-right1 mr-2 ml-2' type='button' id='updateBtn' onclick='updateMovie(" +
+          response[i].movieId +
+          ")'>edit</button>" +
+          "<button type='button' class='pull-right1 btn btn-sm mr-2 ml-2' onclick='deleteMovie(" +
+          response[i].movieId +
+          ")'>delete</button>" +
+          "</td>" +
+          "</tr>";
       }
-    });
-    e.preventDefault();
-  }
-  $(document).ready(function() {
-    movie_data = "";
-    $.getJSON("https://localhost:44325/api/movie", function(data) {
-      $.each(data, function(key, value) {
-        updateForm(value);
-        movie_data += "<tr>";
-        movie_data += "<td>" + value.title + "</td>";
-        movie_data += "<td>" + value.genre + "</td>";
-        movie_data +="<td>" +
-          value.director +
-          "<a href='' ></a><i class='material-icons edit-icon' onclick='updateForm()'>edit</i></a>" +
-          "<a href=''><i class='material-icons edit-icon'>delete</i></a>" +
-          "</td>";
-        movie_data += "</tr>";
-        console.log(value);
-      });
-      $("#table-data").append(movie_data);
-    });
+      $("#table-data").append(ListValue);
+    },
+    failure: function(response) {
+      alert(response.responseText);
+      alert("Failure");
+    },
+    error: function(response) {
+      alert(response);
+      alert("Error");
+    }
   });
-  $("#my-form").submit(processForm);
-})(jQuery);
-
-function updateForm(e){
+}
+$(document).ready(fetchAllMovies);
+///////////////////////////////////END GET///////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////POST//////////////////////////////////////////////////////////////////////////////////////
+function processForm(e) {
   var dict = {
     Title: this["title"].value,
     Genre: this["genre"].value,
-    Director: this["director"].value,
+    Director: this["director"].value
   };
+  let movieToUpdate = this["movieId"].value;
+  if (movieToUpdate) {
+    dynamicUrl = `https://localhost:5001/api/movie/${movieToUpdate}`;
+    dynamicMethod = "PUT";
+  } else {
+    dynamicUrl = `https://localhost:5001/api/movie/`;
+    dynamicMethod = "POST";
+  }
   $.ajax({
-    url: "https://localhost:44325/api/movie",
+    url: dynamicUrl,
     dataType: "json",
-    type: "put",
+    method: dynamicMethod,
     contentType: "application/json",
     data: JSON.stringify(dict),
-    success: function(data, textStatus, jQxhr) {
+    success: function(response, textStatus, jQxhr) {
       console.log("success?");
-      $("#response pre").html(data);
-      $("#title").val();
-      $("#genre").val();
-      $("#director").val();
-      // GetAllMovies();
+      $("#response pre").html(response);
+      $("#title").val("");
+      $("#genre").val("");
+      $("#director").val("");
+      fetchAllMovies();
     },
     error: function(jqXhr, textStatus, errorThrown) {
       console.log(errorThrown);
     }
   });
   e.preventDefault();
+}
+$("#new-form").submit(processForm);
+//////////////////////////////////////////////////////END POST REQUEST////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////START PUT REQUEST//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function updateMovie(movieId) {
+  $.ajax({
+    url: `https://localhost:5001/api/movie/${movieId}`,
+    method: "GET",
+    dataType: "json",
+    success: function(response) {
+      $("#title").val(response.title);
+      $("#genre").val(response.genre);
+      $("#director").val(response.director);
+      $("#movieId").val(response.movieId);
+      fetchAllMovies();
+    },
+    error: function(error) {
+      console.log(error);
+    }
+  });
+}
+//////////////////////////////////////////////////////////////END UPDATE////////////////////////////////////
+///////////////////////////////////////////////////////////////START DELETE/////////////////////////////////
+function deleteMovie(movieId) {
+  $.ajax({
+    url: `https://localhost:5001/api/movie/${movieId}`,
+    method: "DELETE",
+    success: function() {
+      alert("the movie has been deleted");
+      fetchAllMovies();
+    },
+    error: function(error) {
+      alert(`error: ${error}`);
+    }
+  });
 }
