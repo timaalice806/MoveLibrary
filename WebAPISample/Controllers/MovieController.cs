@@ -39,7 +39,7 @@ namespace WebAPISample.Controllers
         public void Post([FromBody]Movie movie)
         {
             // Create movie in db logic
-            _context.Movies.Add(movie);
+                _context.Movies.Add(movie);
             _context.SaveChanges();
         }
 
